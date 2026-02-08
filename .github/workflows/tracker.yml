@@ -1,0 +1,47 @@
+name: Gold Tracker Hourly Update
+
+on:
+  schedule:
+    - cron: '*/30 * * * *' # Run every 30 minutes for better reliability
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  track:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Needed for committing data updates
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Tracker Dependencies
+        run: |
+          cd tracker
+          npm install
+
+      - name: Run Tracker
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+          TICKER: ${{ secrets.TICKER }}
+          NODE_TLS_REJECT_UNAUTHORIZED: '0'
+        run: |
+          cd tracker
+          npm start
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add -f website/public/data.json
+          git add -f tracker/alert-history.json
+          # Removed [skip ci] so Vercel redeploys on update
+          git diff --staged --quiet || (git commit -m "Automated hourly data update" && git push)
