@@ -77,7 +77,7 @@ function App() {
 
   const fetchRealData = async () => {
     try {
-      const response = await fetch('https://raw.githubusercontent.com/nikkamalf/tradingpulse/main/website/public/data.json?t=' + Date.now());
+      const response = await fetch('https://raw.githubusercontent.com/nikkamalf/tradingpulse-staging/main/website/public/data.json?t=' + Date.now());
       if (!response.ok) throw new Error('Data unavailable');
 
       const textData = await response.text();
