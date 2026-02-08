@@ -1,3 +1,4 @@
+// Set this for environments with corporate proxy SSL interception (e.g., Netskope)
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 const nodemailer = require('nodemailer');
@@ -13,7 +14,7 @@ const CONFIG = {
     port: parseInt(process.env.SMTP_PORT || '587'),
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
-    recipient: process.env.RECIPIENT_EMAIL || 'nikkamalf@gmail.com, adibasyakira242@gmail.com',
+    recipient: process.env.RECIPIENT_EMAIL || 'nikkamalf@gmail.com',
     ticker: process.env.TICKER || 'GLD',
     historyPath: path.resolve(__dirname, 'alert-history.json'),
     websiteDataPath: path.resolve(__dirname, '../website/public/data.json'),
@@ -94,17 +95,23 @@ async function sendEmail(subject, body) {
         auth: { user: CONFIG.user, pass: CONFIG.pass },
     });
 
-    try {
-        const info = await transporter.sendMail({
-            from: `"Gold Tracker" <${CONFIG.user}>`,
-            to: CONFIG.recipient,
-            subject: subject,
-            text: body,
-            html: `<p>${body.replace(/\n/g, '<br>')}</p>`,
-        });
-        console.log('Message sent: %s', info.messageId);
-    } catch (err) {
-        console.error('Email failed:', err.message);
+    // Send to each recipient individually for privacy
+    const recipients = CONFIG.recipient.split(',').map(email => email.trim());
+
+    for (const recipient of recipients) {
+        if (!recipient) continue;
+        try {
+            const info = await transporter.sendMail({
+                from: `"Gold Tracker" <${CONFIG.user}>`,
+                to: recipient,
+                subject: subject,
+                text: body,
+                html: `<p>${body.replace(/\n/g, '<br>')}</p>`,
+            });
+            console.log(`Message sent to ${recipient}: %s`, info.messageId);
+        } catch (err) {
+            console.error(`Email failed for ${recipient}:`, err.message);
+        }
     }
 }
 
