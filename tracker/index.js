@@ -13,7 +13,7 @@ const CONFIG = {
     port: parseInt(process.env.SMTP_PORT || '587'),
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
-    recipient: process.env.RECIPIENT_EMAIL || 'nikkamalf@gmail.com',
+    recipient: process.env.RECIPIENT_EMAIL || 'nikkamalf@gmail.com, adibasyakira242@gmail.com',
     ticker: process.env.TICKER || 'GLD',
     historyPath: path.resolve(__dirname, 'alert-history.json'),
     websiteDataPath: path.resolve(__dirname, '../website/public/data.json'),
