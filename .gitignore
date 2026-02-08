@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+dist/
+.vite/
+
+# Environment Variables
+.env
+.env.local
+
+# Project Specific
+tracker/alert-history.json
+website/public/data.json
+*.log
+
+# OS
+.DS_Store
