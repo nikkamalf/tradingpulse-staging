@@ -1,6 +1,6 @@
 {
   "ticker": "GLD",
-  "price": 467.2,
+  "price": 468.49,
   "date": "2026-02-20T00:00:00.000Z",
   "signal": "NEUTRAL",
   "signalHistory": [
@@ -18,7 +18,7 @@
     }
   ],
   "ichimoku": {
-    "tenkan": 457.07,
+    "tenkan": 457.075,
     "kijun": 463.37,
     "senkouA": 408.33000000000004,
     "senkouB": 394.11005
@@ -495,11 +495,11 @@
     {
       "date": "2026-02-20",
       "open": 463.25,
-      "high": 467.6,
+      "high": 468.62,
       "low": 458.34,
-      "close": 467.2,
-      "price": 467.2,
-      "tenkan": 457.07,
+      "close": 468.49,
+      "price": 468.49,
+      "tenkan": 457.075,
       "kijun": 463.37,
       "spanA": 408.33000000000004,
       "spanB": 394.11005
