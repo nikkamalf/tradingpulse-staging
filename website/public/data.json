@@ -1,6 +1,6 @@
 {
   "ticker": "GLD",
-  "price": 462.74,
+  "price": 460.84,
   "date": "2026-03-13T00:00:00.000Z",
   "signal": "BUY",
   "signalHistory": [
@@ -544,9 +544,9 @@
       "date": "2026-03-13",
       "open": 469.31,
       "high": 470.102,
-      "low": 461.11,
-      "close": 462.74,
-      "price": 462.74,
+      "low": 460.22,
+      "close": 460.84,
+      "price": 460.84,
       "tenkan": 470.12,
       "kijun": 466.25,
       "spanA": 459.32,
