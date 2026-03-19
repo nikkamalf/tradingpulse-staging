@@ -1,8 +1,8 @@
 {
   "ticker": "GLD",
-  "price": 444.74,
-  "date": "2026-03-18T00:00:00.000Z",
-  "signal": "NEUTRAL",
+  "price": 425.32,
+  "date": "2026-03-19T00:00:00.000Z",
+  "signal": "SELL",
   "signalHistory": [
     {
       "type": "BUY",
@@ -71,27 +71,19 @@
     {
       "type": "BUY",
       "date": "2026-03-17"
+    },
+    {
+      "type": "SELL",
+      "date": "2026-03-19"
     }
   ],
   "ichimoku": {
-    "tenkan": 462.85,
-    "kijun": 467.095,
-    "senkouA": 459.55,
-    "senkouB": 441.945
+    "tenkan": 449.055,
+    "kijun": 454.475,
+    "senkouA": 462.025,
+    "senkouB": 443.88
   },
   "history": [
-    {
-      "date": "2026-01-21",
-      "open": 446.87,
-      "high": 447.9999,
-      "low": 437.11,
-      "close": 443.6,
-      "price": 443.6,
-      "tenkan": 427.19995,
-      "kijun": 419.73495,
-      "spanA": 387.08507499999996,
-      "spanB": 377.0825
-    },
     {
       "date": "2026-01-22",
       "open": 443.84,
@@ -559,6 +551,18 @@
       "kijun": 467.095,
       "spanA": 459.55,
       "spanB": 441.945
+    },
+    {
+      "date": "2026-03-19",
+      "open": 420.36,
+      "high": 426.96,
+      "low": 416.8,
+      "close": 425.32,
+      "price": 425.32,
+      "tenkan": 449.055,
+      "kijun": 454.475,
+      "spanA": 462.025,
+      "spanB": 443.88
     }
   ]
 }
